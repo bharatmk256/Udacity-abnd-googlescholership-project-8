@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BookBook</string>
+    <string name="save">Save</string>
+    <string name="insert_data">Insert Data</string>
+    <string name="delete_all">Delete All</string>
+    <string name="delete">Delete</string>
+</resources>
