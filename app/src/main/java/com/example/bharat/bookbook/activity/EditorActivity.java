@@ -1,7 +1,6 @@
 package com.example.bharat.bookbook.activity;
 
 import android.content.ContentValues;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
@@ -14,8 +13,6 @@ import android.widget.Toast;
 import com.example.bharat.bookbook.R;
 import com.example.bharat.bookbook.data.BookContract;
 import com.example.bharat.bookbook.data.BooksDbHelper;
-
-import static com.example.bharat.bookbook.data.BookContract.BookEntry.COLUMN_PRODUCT_NAME;
 
 public class EditorActivity extends AppCompatActivity {
 

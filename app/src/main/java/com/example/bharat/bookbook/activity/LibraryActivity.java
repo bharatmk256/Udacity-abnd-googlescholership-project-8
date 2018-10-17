@@ -67,14 +67,14 @@ public class LibraryActivity extends AppCompatActivity {
 
         TextView displayView = (TextView) findViewById(R.id.book_list_text);
         try {
-            displayView.setText("The books table contains " + cursor.getCount() + "books.\n\n");
+            displayView.setText("The books table" + "contains " + cursor.getCount() + "books.\n\n");
             displayView.append(
                     BookEntry._ID + " - " +
-                    BookEntry.COLUMN_PRODUCT_NAME + " - " +
-                    BookEntry.COLUMN_PRODUCT_PRICE + " - " +
-                    BookEntry.COLUMN_PRODUCT_QUANTITY + " - " +
-                    BookEntry.COLUMN_PRODUCT_SUPPLIER + " - " +
-                    BookEntry.COLUMN_SUPPLIER_PHONE + "\n");
+                            BookEntry.COLUMN_PRODUCT_NAME + " - " +
+                            BookEntry.COLUMN_PRODUCT_PRICE + " - " +
+                            BookEntry.COLUMN_PRODUCT_QUANTITY + " - " +
+                            BookEntry.COLUMN_PRODUCT_SUPPLIER + " - " +
+                            BookEntry.COLUMN_SUPPLIER_PHONE + "\n");
 
             int idColumnIndex = cursor.getColumnIndex(BookEntry._ID);
             int productNameColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_PRODUCT_NAME);
@@ -103,7 +103,8 @@ public class LibraryActivity extends AppCompatActivity {
             cursor.close();
         }
     }
-    private void insertBook(){
+
+    private void insertBook() {
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -118,14 +119,14 @@ public class LibraryActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.menu_library,menu);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_library, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch(item.getItemId()){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.insert_data:
                 insertBook();
                 displayDatabaseInfo();
