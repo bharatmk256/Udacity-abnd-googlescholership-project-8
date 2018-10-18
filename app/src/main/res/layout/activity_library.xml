@@ -6,18 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".activity.LibraryActivity">
 
-    <TextView
-        android:id="@+id/book_list_text"
+    <ListView
+        android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="15dp"
-        tools:text="head first java"/>
+        android:padding="16dp" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/nobook"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/empty" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_book"
+            android:textSize="15dp"
+            app:layout_constraintLeft_toLeftOf="@id/nobook"
+            app:layout_constraintRight_toRightOf="@id/nobook"
+            app:layout_constraintTop_toBottomOf="@+id/nobook" />
+
+    </android.support.constraint.ConstraintLayout>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/add_book_floating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_margin="20dp"
-        android:src="@drawable/ic_library_books"/>
+        android:src="@drawable/ic_library_books" />
 </RelativeLayout>

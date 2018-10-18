@@ -13,4 +13,14 @@
     <string name="supplier">Supplier</string>
     <string name="supplier_name">Supplier Name</string>
     <string name="supplier_phone">Supplier Phone</string>
+    <string name="order">Order</string>
+    <string name="book_sold">Book Sold</string>
+    <string name="book_have_not_sold">book cannot be sold</string>
+    <string name="out_of_stock">books are out of stock</string>
+    <string name="no_book">book book no book</string>
+    <string name="warning">Do you really want to delete all books</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+
 </resources>
