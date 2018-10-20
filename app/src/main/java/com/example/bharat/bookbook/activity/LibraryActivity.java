@@ -22,12 +22,15 @@ import android.widget.ListView;
 import com.example.bharat.bookbook.R;
 import com.example.bharat.bookbook.data.BookContract.BookEntry;
 
-public class LibraryActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, BookCursorAdapter.ProductItemClickListener {
+public class LibraryActivity extends AppCompatActivity
+        implements LoaderManager.LoaderCallbacks<Cursor>, BookCursorAdapter.ProductItemClickListener {
 
     public static final String LOG_TAG = LibraryActivity.class.getSimpleName();
+
     private static final int PRODUCT_LOADER = 0;
+
     public static ListView bookListView;
-    //    private BooksDbHelper mDbHelper;
+
     BookCursorAdapter mCursorAdapter;
 
     @Override
@@ -148,6 +151,7 @@ public class LibraryActivity extends AppCompatActivity implements LoaderManager.
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
         mCursorAdapter.swapCursor(cursor);
+        Log.v("LibraryActivity ", cursor + " load finished ");
     }
 
     @Override

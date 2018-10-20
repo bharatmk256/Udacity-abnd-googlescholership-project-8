@@ -12,11 +12,15 @@
         <activity android:name=".activity.LibraryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".activity.EditorActivity"></activity>
+
+        <provider
+            android:exported="false"
+            android:authorities="com.example.bharat.bookbook"
+            android:name=".data.BooksProvider"/>
     </application>
 
 </manifest>

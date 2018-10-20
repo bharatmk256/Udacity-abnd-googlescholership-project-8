@@ -32,9 +32,9 @@ public class BookCursorAdapter extends CursorAdapter {
 
     @Override
     public void bindView(final View view, Context context, Cursor cursor) {
-        TextView nameTextView = (TextView) view.findViewById(R.id.name);
-        TextView priceTextView = (TextView) view.findViewById(R.id.price);
-        final TextView quantityTextView = (TextView) view.findViewById(R.id.quantity);
+        TextView nameTextView = view.findViewById(R.id.name);
+        TextView priceTextView = view.findViewById(R.id.price);
+        final TextView quantityTextView = view.findViewById(R.id.quantity);
 
         int nameColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_PRODUCT_NAME);
         int priceColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_PRODUCT_PRICE);
@@ -57,7 +57,6 @@ public class BookCursorAdapter extends CursorAdapter {
                     int newQuantity = Integer.valueOf(quantity)-1;
                     View linearLayout = (View) view.getParent();
                     ListView listView = (ListView) linearLayout.getParent();
-
                     int rows = mListner.onBookOrder(listView.getPositionForView(view),newQuantity);
                     if (rows > 0){
                         Toast.makeText(mContext, R.string.book_sold, Toast.LENGTH_SHORT).show();
