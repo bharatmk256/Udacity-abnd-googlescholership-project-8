@@ -55,7 +55,8 @@ public class BookCursorAdapter extends CursorAdapter {
                 String quantity = quantityTextView.getText().toString();
                 if(Integer.valueOf(quantity) >0){
                     int newQuantity = Integer.valueOf(quantity)-1;
-                    View linearLayout = (View) view.getParent();
+                    View relativeLayout = (View) view.getParent();
+                    View linearLayout = (View) relativeLayout.getParent();
                     ListView listView = (ListView) linearLayout.getParent();
                     int rows = mListner.onBookOrder(listView.getPositionForView(view),newQuantity);
                     if (rows > 0){

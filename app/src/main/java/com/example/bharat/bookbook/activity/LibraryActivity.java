@@ -59,7 +59,7 @@ public class LibraryActivity extends AppCompatActivity
         bookListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(LibraryActivity.this, EditorActivity.class);
+                Intent intent = new Intent(LibraryActivity.this, StockActivity.class);
                 Uri currentUri = ContentUris.withAppendedId(BookEntry.CONTENT_URI, id);
                 intent.setData(currentUri);
                 startActivity(intent);
