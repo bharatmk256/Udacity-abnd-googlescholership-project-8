@@ -1,6 +1,5 @@
 package com.example.bharat.bookbook.activity;
 
-import android.app.AlertDialog;
 import android.app.LoaderManager;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -9,6 +8,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.content.Loader;
 import android.net.Uri;
+import android.content.CursorLoader;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,11 +26,8 @@ public class LibraryActivity extends AppCompatActivity
         implements LoaderManager.LoaderCallbacks<Cursor>, BookCursorAdapter.ProductItemClickListener {
 
     public static final String LOG_TAG = LibraryActivity.class.getSimpleName();
-
     private static final int PRODUCT_LOADER = 0;
-
     public static ListView bookListView;
-
     BookCursorAdapter mCursorAdapter;
 
     @Override
@@ -38,18 +35,17 @@ public class LibraryActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library);
 
-        FloatingActionButton floatingActionButton = (FloatingActionButton)
-                findViewById(R.id.add_book_floating);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton fab = findViewById(R.id.add_book_floating);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LibraryActivity.this, EditorActivity.class);
                 startActivity(intent);
             }
         });
+
         bookListView = findViewById(R.id.list);
 
-        // Find and set empty view on the ListView, so that it only shows when the list has 0 items.
         View emptyView = findViewById(R.id.empty);
         bookListView.setEmptyView(emptyView);
 
@@ -66,22 +62,21 @@ public class LibraryActivity extends AppCompatActivity
             }
         });
 
-        //Kick off the loader
         getLoaderManager().initLoader(PRODUCT_LOADER, null, this);
     }
 
     private void insertBook() {
 
         ContentValues values = new ContentValues();
-
-        values.put(BookEntry.COLUMN_PRODUCT_NAME, "Head First Java");
-        values.put(BookEntry.COLUMN_PRODUCT_PRICE, 100);
-        values.put(BookEntry.COLUMN_PRODUCT_QUANTITY, 20);
-        values.put(BookEntry.COLUMN_PRODUCT_SUPPLIER, "Amazon");
-        values.put(BookEntry.COLUMN_SUPPLIER_PHONE, "9999999999");
+        values.put(BookEntry.COLUMN_PRODUCT_NAME, "sprint");
+        values.put(BookEntry.COLUMN_PRODUCT_PRICE, 500.7);
+        values.put(BookEntry.COLUMN_PRODUCT_QUANTITY, 10);
+        values.put(BookEntry.COLUMN_PRODUCT_SUPPLIER_NAME, "Amazon");
+        values.put(BookEntry.COLUMN_PRODUCT_SUPPLIER_PHONE_NUMBER, "7878458127");
 
         Uri newUri = getContentResolver().insert(BookEntry.CONTENT_URI, values);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -95,6 +90,7 @@ public class LibraryActivity extends AppCompatActivity
             case R.id.insert_data:
                 insertBook();
                 return true;
+
             case R.id.delete_all:
                 showDeleteConfirmationDialog();
                 return true;
@@ -103,35 +99,34 @@ public class LibraryActivity extends AppCompatActivity
     }
 
     private void showDeleteConfirmationDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(R.string.warning);
+        android.support.v7.app.AlertDialog.Builder builder =
+                new android.support.v7.app.AlertDialog.Builder(this);
+        builder.setMessage(R.string.are_you_sure);
         builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-            @Override
             public void onClick(DialogInterface dialog, int id) {
-                deleteAllProduct();
+                deleteAllBook();
             }
         });
         builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-            @Override
+
             public void onClick(DialogInterface dialog, int id) {
                 if (dialog != null) {
                     dialog.dismiss();
                 }
             }
         });
-        AlertDialog alertDialog = builder.create();
+
+        android.support.v7.app.AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
 
-    private void deleteAllProduct() {
+    private void deleteAllBook() {
         int rowsDeleted = getContentResolver().delete(BookEntry.CONTENT_URI, null, null);
-        Log.v("LibraryActivity ", rowsDeleted + " rows deleted ");
+        Log.v("CatalogActivity", rowsDeleted + " rows deleted from pet database");
     }
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        // Now create and return a CursorLoader that will take care of
-        // creating a Cursor for the data being displayed.
 
         String[] projection = {
                 BookEntry._ID,
@@ -140,7 +135,7 @@ public class LibraryActivity extends AppCompatActivity
                 BookEntry.COLUMN_PRODUCT_QUANTITY
         };
 
-        return new android.content.CursorLoader(this,
+        return new CursorLoader(this,
                 BookEntry.CONTENT_URI,
                 projection,
                 null,
@@ -151,11 +146,11 @@ public class LibraryActivity extends AppCompatActivity
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
         mCursorAdapter.swapCursor(cursor);
-        Log.v("LibraryActivity ", cursor + " load finished ");
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
+
         mCursorAdapter.swapCursor(null);
     }
 

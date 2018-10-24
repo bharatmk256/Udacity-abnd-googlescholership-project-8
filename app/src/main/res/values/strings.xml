@@ -4,6 +4,8 @@
     <string name="insert_data">Insert Data</string>
     <string name="delete_all">Delete All</string>
     <string name="delete">Delete</string>
+    <string name="order">Order</string>
+
     <!--xml-->
     <string name="book">Book</string>
     <string name="book_name">Book Name</string>
@@ -17,33 +19,49 @@
     <string name="plus">+</string>
     <string name="minus">-</string>
     <string name="edit_book">Edit Book</string>
+    <string name="no_book">Book Book No Book</string>
+
     <!--script-->
-    <string name="order">Order</string>
-    <string name="book_sold">Book Sold</string>
-    <string name="book_have_not_sold">book cannot be sold</string>
-    <string name="out_of_stock">books are out of stock</string>
-    <string name="no_book">book book no book</string>
-    <string name="warning">Do you really want to delete all books</string>
+    <string name="add_book_name">Add Book Name</string>
+    <string name="enter_price">Enter Price</string>
+    <string name="suppllier_name">Supplier Name</string>
+    <string name="enter_supplier_name">Enter Supplier Name</string>
+    <string name="enter_phone_no">Enter Phone No</string>
+    <string name="book_inventory">Book Inventory</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_save">save</string>
+    <string name="insert_book">Insert Dummy Book</string>
+    <string name="delete_all_books">Delete All Books</string>
+    <string name="sale">Sale</string>
+    <string name="available_quantity">Available Quantity -\u0020</string>
+    <string name="price_tag">Price -\u0020₹\u0020</string>
+    <string name="empty_view_title_text">It\'s is bit lonely here</string>
+    <string name="empty_view_subtitle_text">Get started by clicking the bottom book button</string>
+    <string name="are_you_sure">Are you sure ?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="editor_edit_title">Edit Book</string>
-    <string name="editor_new_title">Add Book</string>
-    <string name="fields_cannot_empty">fields cannot be empty</string>
-    <string name="file_cannot_saved">file cannot be saved</string>
-    <string name="failed_to_save">Error in saving books</string>
-    <string name="failed_to_update">Error in updating books</string>
-    <string name="success_to_save">Congratulation book are saved</string>
-    <string name="success_to_update">Congratulation book are updated</string>
+    <string name="add_book">Add Book</string>
+    <string name="label_book_detail">Book Details</string>
+    <string name="cant_save_empty_book">Can\'t save empty book</string>
+    <string name="editor_insert_product_failed">Error with saving book.</string>
+    <string name="editor_insert_product_successful">Book Saved</string>
+    <string name="editor_update_product_failed">Error updating book.</string>
+    <string name="editor_update_product_successful">Book Updated succesfully</string>
+    <string name="delete_dialog_msg">Delete this book ?</string>
+    <string name="cancel">Cancel</string>
+    <string name="editor_delete_product_failed">Delete book failed</string>
+    <string name="editor_delete_procduct_successful">Book deleted succesfully.</string>
+    <string name="unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
     <string name="discard">Discard</string>
-    <string name="unsaved">Discard your changes and quit editing?</string>
-    <string name="keep_editing">Never mind</string>
-    <string name="cancel">Never mind</string>
-    <string name="delete_book_failed">Failed to delete book</string>
-    <string name="delete_book_success">Book is deleted</string>
-    <string name="delete_dialog_msg">Do you want to delete this book</string>
-    <string name="books_less_then_0">Book Cannot ben less then 0</string>
-
-
-
-
+    <string name="keep_editing">Keep Editing</string>
+    <string name="fields_cant_be_empty">Fields can\'t be empty</string>
+    <string name="sold_book">Book sold successfully</string>
+    <string name="book_cannot_be_sold_unknown_error">Book cannot be sold due to unknown error</string>
+    <string name="not_in_stock">Book not in stock</string>
+    <string name="eighty">₹ 80.0</string>
+    <string name="book_details">BOOK DETAILS</string>
+    <string name="supplier_details">SUPPLIER DETAILS</string>
+    <string name="quantity_tag">QUANTITY</string>
+    <string name="book_cant_be_neative">Books can\'t be negative</string>
+    <string name="invalid_quantity">Invalid Quantity</string>
 </resources>

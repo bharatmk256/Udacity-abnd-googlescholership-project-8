@@ -20,7 +20,7 @@
         <provider
             android:exported="false"
             android:authorities="com.example.bharat.bookbook"
-            android:name=".data.BooksProvider"/>
+            android:name=".data.BookProvider"/>
     </application>
 
 </manifest>
