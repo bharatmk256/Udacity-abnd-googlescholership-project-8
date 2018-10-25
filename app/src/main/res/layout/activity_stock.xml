@@ -77,6 +77,12 @@
             android:textStyle="bold"
             tools:text="9786547890" />
 
+        <Button
+            android:id="@+id/dialButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_call_black_24dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -29,7 +29,7 @@ public class StockActivity extends AppCompatActivity implements LoaderManager.Lo
     private TextView mSupplierNameTextView;
     private TextView mSupplierPhoneNoTextView;
     private TextView mQuantityTextView;
-    private Button mOrderButton;
+    private Button mDialButton;
     private Button mIncrementButton;
     private Button mDecrementButton;
     private int quantityToBeChanged = 1;
@@ -47,7 +47,7 @@ public class StockActivity extends AppCompatActivity implements LoaderManager.Lo
         mSupplierNameTextView =     findViewById(R.id.supplier_name_text);
         mSupplierPhoneNoTextView =  findViewById(R.id.supplier_phone_text);
         mQuantityTextView =         findViewById(R.id.book_quantity_text);
-        mOrderButton =              findViewById(R.id.order_button);
+        mDialButton = findViewById(R.id.dialButton);
         mIncrementButton =          findViewById(R.id.book_quantity_plus);
         mDecrementButton =          findViewById(R.id.book_quantity_minus);
 
@@ -166,45 +166,45 @@ public class StockActivity extends AppCompatActivity implements LoaderManager.Lo
             mSupplierNameTextView.setText(supplierName);
             mSupplierPhoneNoTextView.setText(phoneNo);
 
-//            mIncrementButton.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    String quantity = mQuantityTextView.getText().toString();
-//                    int newQuantity = Integer.valueOf(quantity) + quantityToBeChanged;
-//                    if (newQuantity >= 0) {
-//                        ContentValues values = new ContentValues();
-//                        values.put(BookEntry.COLUMN_PRODUCT_QUANTITY, newQuantity);
-//                        getContentResolver().update(mCurrentProductUri, values, null, null);
-//                        mQuantityTextView.setText(String.valueOf(newQuantity));
-//                    }
-//                }
-//            });
-//
-//            mDecrementButton.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    String quantity = mQuantityTextView.getText().toString();
-//                    int newQuantity = Integer.valueOf(quantity) - quantityToBeChanged;
-//                    if (newQuantity >= 0) {
-//                        ContentValues values = new ContentValues();
-//                        values.put(BookEntry.COLUMN_PRODUCT_QUANTITY, newQuantity);
-//                        getContentResolver().update(mCurrentProductUri, values, null, null);
-//                        mQuantityTextView.setText(String.valueOf(newQuantity));
-//                    } else {
-//                        Toast.makeText(StockActivity.this, R.string.book_cant_be_neative, Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//            });
-//
-//            mOrderButton.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    String uri = "tel:" + phoneNo;
-//                    Intent intent = new Intent(Intent.ACTION_DIAL);
-//                    intent.setData(Uri.parse(uri));
-//                    startActivity(intent);
-//                }
-//            });
+            mIncrementButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String quantity = mQuantityTextView.getText().toString();
+                    int newQuantity = Integer.valueOf(quantity) + quantityToBeChanged;
+                    if (newQuantity >= 0) {
+                        ContentValues values = new ContentValues();
+                        values.put(BookEntry.COLUMN_PRODUCT_QUANTITY, newQuantity);
+                        getContentResolver().update(mCurrentProductUri, values, null, null);
+                        mQuantityTextView.setText(String.valueOf(newQuantity));
+                    }
+                }
+            });
+
+            mDecrementButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String quantity = mQuantityTextView.getText().toString();
+                    int newQuantity = Integer.valueOf(quantity) - quantityToBeChanged;
+                    if (newQuantity >= 0) {
+                        ContentValues values = new ContentValues();
+                        values.put(BookEntry.COLUMN_PRODUCT_QUANTITY, newQuantity);
+                        getContentResolver().update(mCurrentProductUri, values, null, null);
+                        mQuantityTextView.setText(String.valueOf(newQuantity));
+                    } else {
+                        Toast.makeText(StockActivity.this, R.string.book_cant_be_neative, Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+            mDialButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String uri = "tel:" + phoneNo;
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse(uri));
+                    startActivity(intent);
+                }
+            });
 
         }
     }
