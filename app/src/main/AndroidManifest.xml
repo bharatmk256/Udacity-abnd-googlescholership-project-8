@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.EditorActivity"></activity>
+        <activity android:name=".activity.StockActivity" android:parentActivityName=".activity.LibraryActivity"></activity>
 
         <provider
             android:exported="false"

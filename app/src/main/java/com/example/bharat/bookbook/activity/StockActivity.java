@@ -145,13 +145,13 @@ public class StockActivity extends AppCompatActivity implements LoaderManager.Lo
         }
 
         // Find the columns of book attributes that we're interested in
-        int bookNameColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_PRODUCT_NAME);
-        int priceColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_PRODUCT_PRICE);
-        int quantityColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_PRODUCT_QUANTITY);
-        int supplierNameColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_PRODUCT_SUPPLIER_NAME);
-        int supplierPhoneNoColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_PRODUCT_SUPPLIER_PHONE_NUMBER);
 
         if (cursor.moveToNext()) {
+            int bookNameColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_PRODUCT_NAME);
+            int priceColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_PRODUCT_PRICE);
+            int quantityColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_PRODUCT_QUANTITY);
+            int supplierNameColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_PRODUCT_SUPPLIER_NAME);
+            int supplierPhoneNoColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_PRODUCT_SUPPLIER_PHONE_NUMBER);
             // Extract out the value from the Cursor for the given column index
             String bookName = cursor.getString(bookNameColumnIndex);
             Float price = cursor.getFloat(priceColumnIndex);
@@ -161,50 +161,50 @@ public class StockActivity extends AppCompatActivity implements LoaderManager.Lo
 
             // Update the views on the screen with the values from the database
             mBookTextView.setText(bookName);
-            mPriceTextView.setText("₹ " + String.valueOf(price));
-            mQuantityTextView.setText(String.valueOf(quantity));
+            mPriceTextView.setText("₹ " + Float.toString(price));
+            mQuantityTextView.setText(Integer.toString(quantity));
             mSupplierNameTextView.setText(supplierName);
             mSupplierPhoneNoTextView.setText(phoneNo);
 
-            mIncrementButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String quantity = mQuantityTextView.getText().toString();
-                    int newQuantity = Integer.valueOf(quantity) + quantityToBeChanged;
-                    if (newQuantity >= 0) {
-                        ContentValues values = new ContentValues();
-                        values.put(BookEntry.COLUMN_PRODUCT_QUANTITY, newQuantity);
-                        getContentResolver().update(mCurrentProductUri, values, null, null);
-                        mQuantityTextView.setText(String.valueOf(newQuantity));
-                    }
-                }
-            });
-
-            mDecrementButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String quantity = mQuantityTextView.getText().toString();
-                    int newQuantity = Integer.valueOf(quantity) - quantityToBeChanged;
-                    if (newQuantity >= 0) {
-                        ContentValues values = new ContentValues();
-                        values.put(BookEntry.COLUMN_PRODUCT_QUANTITY, newQuantity);
-                        getContentResolver().update(mCurrentProductUri, values, null, null);
-                        mQuantityTextView.setText(String.valueOf(newQuantity));
-                    } else {
-                        Toast.makeText(StockActivity.this, R.string.book_cant_be_neative, Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-
-            mOrderButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String uri = "tel:" + phoneNo;
-                    Intent intent = new Intent(Intent.ACTION_DIAL);
-                    intent.setData(Uri.parse(uri));
-                    startActivity(intent);
-                }
-            });
+//            mIncrementButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    String quantity = mQuantityTextView.getText().toString();
+//                    int newQuantity = Integer.valueOf(quantity) + quantityToBeChanged;
+//                    if (newQuantity >= 0) {
+//                        ContentValues values = new ContentValues();
+//                        values.put(BookEntry.COLUMN_PRODUCT_QUANTITY, newQuantity);
+//                        getContentResolver().update(mCurrentProductUri, values, null, null);
+//                        mQuantityTextView.setText(String.valueOf(newQuantity));
+//                    }
+//                }
+//            });
+//
+//            mDecrementButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    String quantity = mQuantityTextView.getText().toString();
+//                    int newQuantity = Integer.valueOf(quantity) - quantityToBeChanged;
+//                    if (newQuantity >= 0) {
+//                        ContentValues values = new ContentValues();
+//                        values.put(BookEntry.COLUMN_PRODUCT_QUANTITY, newQuantity);
+//                        getContentResolver().update(mCurrentProductUri, values, null, null);
+//                        mQuantityTextView.setText(String.valueOf(newQuantity));
+//                    } else {
+//                        Toast.makeText(StockActivity.this, R.string.book_cant_be_neative, Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//            });
+//
+//            mOrderButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    String uri = "tel:" + phoneNo;
+//                    Intent intent = new Intent(Intent.ACTION_DIAL);
+//                    intent.setData(Uri.parse(uri));
+//                    startActivity(intent);
+//                }
+//            });
 
         }
     }

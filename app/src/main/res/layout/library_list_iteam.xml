@@ -67,6 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_alignParentBottom="true"
+        android:focusable="false"
         android:text="@string/order" />
     </RelativeLayout>
     </LinearLayout>
