@@ -25,7 +25,6 @@
     <string name="book_text">Book Details</string>
     <string name="plus">+</string>
     <string name="minus">-</string>
-    <string name="hint_edit_text">Enter Quantity</string>
     <!--java-->
     <string name="are_you_sure">Are You Sure? You are deleting all books</string>
     <string name="yes">Yes</string>
