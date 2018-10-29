@@ -119,11 +119,5 @@
             android:textAppearance="?android:textAppearanceLarge"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/detail_enter_quantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_edit_text"
-            android:inputType="number" />
     </LinearLayout>
 </LinearLayout>

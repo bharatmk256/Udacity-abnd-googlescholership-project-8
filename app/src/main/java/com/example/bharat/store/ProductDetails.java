@@ -34,7 +34,6 @@ public class ProductDetails extends AppCompatActivity implements LoaderManager.L
     private Button mOrderButton;
     private Button mIncrementButton;
     private Button mDecrementButton;
-    private EditText mEnterQuantityEditText;
     private int quantityToBeChanged = 1;
 
     @Override
@@ -53,7 +52,6 @@ public class ProductDetails extends AppCompatActivity implements LoaderManager.L
         mOrderButton = findViewById(R.id.order_button);
         mIncrementButton = findViewById(R.id.increment_button);
         mDecrementButton = findViewById(R.id.decrement_button);
-        mEnterQuantityEditText = findViewById(R.id.detail_enter_quantity);
 
         getLoaderManager().initLoader(PRODUCT_LOADER, null, this);
     }
@@ -167,7 +165,6 @@ public class ProductDetails extends AppCompatActivity implements LoaderManager.L
             mIncrementButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    changeQuantity();
                     String quantity = mQuantityTextView.getText().toString();
                     int newQuantity = Integer.valueOf(quantity) + quantityToBeChanged;
                     if (newQuantity >= 0) {
@@ -182,7 +179,6 @@ public class ProductDetails extends AppCompatActivity implements LoaderManager.L
             mDecrementButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    changeQuantity();
                     String quantity = mQuantityTextView.getText().toString();
                     int newQuantity = Integer.valueOf(quantity) - quantityToBeChanged;
                     if (newQuantity >= 0) {
@@ -218,11 +214,5 @@ public class ProductDetails extends AppCompatActivity implements LoaderManager.L
         mSupplierPhoneNoTextView.setText("");
     }
 
-    private void changeQuantity() {
-        String quantityString = mEnterQuantityEditText.getText().toString().trim();
-        if (!TextUtils.isEmpty(quantityString)) {
-            quantityToBeChanged = Integer.valueOf(quantityString);
-        }
-    }
 }
 
